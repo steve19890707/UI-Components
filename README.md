@@ -13,7 +13,9 @@ component params guide.
 
 | object | Params | Type |
 | ------ | ------ | ------ |
-| themeColor | light / dark | string |
+| datalist | default: empty array | array |
+| theme | light / dark | string |
 | width | [default: 180px] (number) + px / % / rem ...etc | string |
 | fontSize | [default: 14px] (number) + px / % / rem ...etc | string |
-| dropStatus | true / false | boolean |
+| placeholder | default: 'select please' | string |
+| emptyValue | default: 'data not found' | string |

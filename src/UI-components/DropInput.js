@@ -3,6 +3,7 @@ import { noop } from "lodash";
 import styled from "styled-components";
 import { IoMdArrowDropdown } from "react-icons/io";
 import { themes } from "../theme-style";
+import { randomMakeId, filterSearch } from "../tools";
 
 const StyledDropInput = styled.div`
   @keyframes listDrop {
@@ -15,7 +16,10 @@ const StyledDropInput = styled.div`
       max-height:200px;
     };
   }
-  input {
+  position: relative;
+  width: ${({ props }) => props.width};
+  cursor: pointer;
+  .input {
     width: 100%;
     outline: 0;
     box-sizing: border-box;
@@ -26,17 +30,30 @@ const StyledDropInput = styled.div`
     background-color:${({ props }) => props.themeColor.bottom};
     color: ${({ props }) => props.themeColor.color};
     transition:.2s ;
-    cursor: pointer;
   }
-  input::placeholder {
+  .input::placeholder {
     color: ${({ props }) => props.themeColor.placeholder};
   }
-  &:hover input {
+  &:hover .input {
     border:2px solid ${({ props }) => props.themeColor.main};
   }
-  position: relative;
-  width: ${({ props }) => props.width};
-  cursor: pointer;
+  .search-input {
+    opacity: ${({ props }) => props.dropStatus ? 1 : 0};
+    position: absolute;
+    left:50% ;
+    top:50% ;
+    width: calc(100% - 4px);
+    height:calc(100% - 4px);
+    border:0 ;
+    margin:0 ;
+    outline: 0;
+    box-sizing: border-box;
+    padding: 8px 16px;
+    border-radius:8px;
+    transform:translate(-50%,-50%) ;
+    background-color:${({ props }) => props.themeColor.bottom};
+    cursor: pointer;
+  }
   .svg-IoMdArrowDropdown {
     position: absolute;
     top:50% ;
@@ -47,6 +64,7 @@ const StyledDropInput = styled.div`
     transform:${({ props }) => props.dropStatus ? `translateY(-50%)rotate(180deg)` : `translateY(-50%)rotate(0deg)`
   };
     transition:.3s;
+    z-index: 3;
   }
   .data-list {
     opacity:0 ;
@@ -93,26 +111,20 @@ export const DropInput = ({
   width = '180px',
   fontSize = '14px',
   placeholder = 'select please',
+  emptyValue = 'data not found',
   onClick = noop
 }) => {
   const [inputValue, setInputValue] = useState('');
   const [dropStatus, setDropStatus] = useState(false);
-  const makeid = (length) => {
-    let result = '';
-    let characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    let charactersLength = characters.length;
-    for (var i = 0; i < length; i++) {
-      result += characters.charAt(Math.floor(Math.random() *
-        charactersLength));
-    }
-    return result;
-  }
-  const id = `ui-dropinput-${makeid(6)}`;
+  const [data, setData] = useState(datalist);
+  const dropinputId = `ui-dropinput-${randomMakeId(6)}`;
+  const searchInputId = `ui-searchinput-${randomMakeId(6)}`;
   useEffect(() => {
     const handler = (e) => {
-      const thisDom = document.getElementById(id);
+      const thisDom = document.getElementById(dropinputId);
       if (thisDom && !thisDom.contains(e.target)) {
         setDropStatus(false);
+        setData(datalist);
       }
     }
     // Bind the event listener
@@ -123,20 +135,31 @@ export const DropInput = ({
     };
   })
   return <StyledDropInput
-    id={id}
+    id={dropinputId}
     props={{
       themeColor: themes[theme] || themes.light,
       width: width,
       fontSize: fontSize,
       dropStatus: dropStatus,
     }}
-    onClick={() => setDropStatus(prev => !prev)}
+    onClick={() => {
+      document.getElementById(searchInputId).value = '';
+      setDropStatus(prev => !prev);
+      setData(datalist);
+    }}
   >
-    <input placeholder={placeholder} readOnly value={inputValue}></input>
+    <input className="input" placeholder={placeholder} readOnly value={inputValue}></input>
+    <input id={searchInputId} className="search-input" onChange={(e) => {
+      const val = e.target.value;
+      setData(filterSearch(datalist, val, emptyValue));
+    }}></input>
     <IoMdArrowDropdown className="svg-IoMdArrowDropdown" />
     <div className="data-list">
-      {datalist.map((val, key) => <div key={key} className="data"
+      {data.map((val, key) => <div key={key} className="data"
         onClick={() => {
+          if (val === emptyValue) {
+            return;
+          }
           const values = {
             index: key + 1,
             value: val,

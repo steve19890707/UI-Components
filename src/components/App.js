@@ -56,7 +56,7 @@ export const App = () => {
     <div className="caption">[ drop input ] demo :</div>
     <DropInput
       theme={theme}
-      datalist={['value 1', 'value 2', 'value 3', 'value 4', 'value 5', 'value 6', 'value 7', 'value 8', 'value 9']}
+      datalist={["Apple", "Orange", "Pear", "Lemon", "Apple1", "Orange2", "Pear3", "Lemon4"]}
       onClick={(e) => console.log(e)}
     />
   </StyledApp>
