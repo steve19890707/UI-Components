@@ -1,4 +1,4 @@
-# UI Components (beta)
+# Muscle UI Components (beta)
 
 It's components for React, now is beta version, release will be come in future.
 ### [develop using packages]
@@ -9,7 +9,7 @@ It's components for React, now is beta version, release will be come in future.
 ## Components Using
 
 component params guide.
-### 📌  <DropInput/>
+### 📌 DropInput <DropInput/>
 
 | object | Params | Type |
 | ------ | ------ | ------ |
