@@ -17,7 +17,7 @@ component params guide.
 | theme | light / dark | string |
 | width | [default: 180px] (number) + px / % / rem ...etc | string |
 | fontSize | [default: 14px] (number) + px / % / rem ...etc | string |
-| placeholder | default: 'select please' | string |
+| placeholder | default: 'select' | string |
 | emptyValue | default: 'data not found' | string |
 | onClick | call your event, return: { index, value } | function |
 
@@ -30,3 +30,22 @@ component params guide.
 | width | [default: 180px] (number) + px / % / rem ...etc | string |
 | fontSize | [default: 14px] (number) + px / % / rem ...etc | string |
 | onClick | call your event | function |
+
+### 📌 Switch
+
+| object | Params | Type |
+| ------ | ------ | ------ |
+| theme | light / dark | string |
+| size | [default: 50px] (number) + px / % / rem ...etc | string |
+| onChange | call your event, return: Boolen | function |
+
+### 📌 Input
+
+| object | Params | Type |
+| ------ | ------ | ------ |
+| datalist | default: empty array | array |
+| theme | light / dark | string |
+| width | [default: 180px] (number) + px / % / rem ...etc | string |
+| fontSize | [default: 14px] (number) + px / % / rem ...etc | string |
+| placeholder | default: 'select' | string |
+| onChange | call your event, return: value(string) | function |

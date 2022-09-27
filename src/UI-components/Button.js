@@ -21,7 +21,7 @@ const StyledButton = styled.button`
   font-size: ${({ props }) => props.fontSize};
   color: ${({ props }) => props.themeColor.btnColor};
   border:2px solid ${({ props }) => props.themeColor.btnBorder};
-  background-color:${({ props }) => props.themeColor.btnMain};
+  background-color:${({ props }) => props.themeColor.main};
   /* transition:.3s ; */
   overflow:hidden ;
   cursor: pointer;

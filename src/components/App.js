@@ -5,6 +5,8 @@ import { themes } from "../theme-style";
 // tools
 import { DropInput } from "../UI-components/DropInput";
 import { Button } from "../UI-components/Button";
+import { Switch } from "../UI-components/Switch";
+import { Input } from "../UI-components/Input";
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -57,14 +59,19 @@ const StyledApp = styled.div`
   }
   .compnent-value {
     font-size:16px;
-    margin-left:20px ;
+    margin-left:20px;
+    span {
+      color: ${({ theme }) => themes[theme].main};
+    }
   }
 `;
 export const App = () => {
   const [theme, setTheme] = useState('light')
   const [dropInputDemoVal, setDropInputDemoVal] = useState('');
   const [buttonDemoVal, setButtonDemoVal] = useState('');
-  return <StyledApp>
+  const [switchDemoVal, setSwitchDemoVal] = useState(false);
+  const [inputDemoVal, setInputDemoVal] = useState('');
+  return <StyledApp theme={theme}>
     <GlobalStyle theme={theme} />    <div className="theme-btns">
       <button onClick={() => setTheme('light')}>light</button>
       <button onClick={() => setTheme('dark')}>dark</button>
@@ -77,7 +84,7 @@ export const App = () => {
         datalist={["Apple", "Orange", "Pear", "Lemon", "Apple1", "Orange2", "Pear3", "Lemon4"]}
         onClick={(e) => setDropInputDemoVal(e)}
       />
-      <div className="compnent-value">value: {dropInputDemoVal.value}, index: {dropInputDemoVal.index}</div>
+      <div className="compnent-value">value: <span>{dropInputDemoVal.value}</span>, index: <span>{dropInputDemoVal.index}</span></div>
     </div>
     <div className="caption">[ button ] demo :</div>
     <div className="demo-compnent">
@@ -85,7 +92,25 @@ export const App = () => {
         theme={theme}
         onClick={() => setButtonDemoVal('clicked!')}
       />
-      <div className="compnent-value">value: {buttonDemoVal}</div>
+      <div className="compnent-value">value: <span>{buttonDemoVal}</span></div>
+    </div>
+    <div className="caption">[ switch ] demo :</div>
+    <div className="demo-compnent">
+      <Switch
+        theme={theme}
+        status={switchDemoVal}
+        onChange={() => setSwitchDemoVal(prev => !prev)}
+      />
+      <div className="compnent-value">value: <span>{switchDemoVal ? 'true' : 'false'}</span></div>
+    </div>
+    <div className="caption">[ input ] demo :</div>
+    <div className="demo-compnent">
+      <Input
+        theme={theme}
+        datalist={["@fresco.tech", "@google.com"]}
+        onChange={(val) => setInputDemoVal(val)}
+      />
+      <div className="compnent-value">value: <span>{inputDemoVal}</span></div>
     </div>
   </StyledApp>
 }
