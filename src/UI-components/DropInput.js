@@ -25,6 +25,8 @@ const StyledDropInput = styled.div`
     box-sizing: border-box;
     padding: 8px 16px;
     border-radius:8px;
+    overflow: hidden;
+    text-overflow: ellipsis;
     font-size: ${({ props }) => props.fontSize};
     border:2px solid ${({ props }) => props.themeColor.sub};
     background-color:${({ props }) => props.themeColor.bottom};
@@ -51,6 +53,8 @@ const StyledDropInput = styled.div`
     padding: 8px 16px;
     border-radius:8px;
     transform:translate(-50%,-50%) ;
+    font-size: ${({ props }) => props.fontSize};
+    color: ${({ props }) => props.themeColor.color};
     background-color:${({ props }) => props.themeColor.bottom};
     cursor: pointer;
   }
@@ -79,7 +83,8 @@ const StyledDropInput = styled.div`
     border:2px solid ${({ props }) => props.themeColor.sub};
     overflow:auto ;
     max-height:0;
-    animation: ${({ props }) => props.dropStatus ? 'listDrop .2s forwards' : 'unset'};
+    z-index: 99;
+    animation: ${({ props }) => props.dropStatus ? `listDrop ${props.dataLength > 6 ? '.2' : '0'}s forwards` : 'unset'};
     &::-webkit-scrollbar {
       width: 10px;
     }
@@ -98,6 +103,8 @@ const StyledDropInput = styled.div`
     color:${({ props }) => props.themeColor.color};
     font-size:${({ props }) => props.fontSize};
     transition:.2s ;
+    overflow: hidden;
+    text-overflow: ellipsis;
     &:hover {
       background-color: ${({ props }) => props.themeColor.main};
       color:${({ props }) => props.themeColor.bottom};
@@ -141,6 +148,7 @@ export const DropInput = ({
       width: width,
       fontSize: fontSize,
       dropStatus: dropStatus,
+      dataLength: datalist.length
     }}
     onClick={() => {
       document.getElementById(searchInputId).value = '';

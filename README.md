@@ -9,7 +9,7 @@ It's components for React, now is beta version, release will be come in future.
 ## Components Using
 
 component params guide.
-### 📌 DropInput <DropInput/>
+### 📌 DropInput
 
 | object | Params | Type |
 | ------ | ------ | ------ |
@@ -19,3 +19,14 @@ component params guide.
 | fontSize | [default: 14px] (number) + px / % / rem ...etc | string |
 | placeholder | default: 'select please' | string |
 | emptyValue | default: 'data not found' | string |
+| onClick | call your event, return: { index, value } | function |
+
+### 📌 Button
+
+| object | Params | Type |
+| ------ | ------ | ------ |
+| theme | light / dark | string |
+| text | default: button | string |
+| width | [default: 180px] (number) + px / % / rem ...etc | string |
+| fontSize | [default: 14px] (number) + px / % / rem ...etc | string |
+| onClick | call your event | function |

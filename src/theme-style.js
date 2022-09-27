@@ -6,7 +6,10 @@ export const themes = {
     color: '#1a1a1a',
     placeholder: '#9f9f9f',
     bottom: '#fff',
-    dark: '#f0f0f0'
+    dark: '#f0f0f0',
+    btnMain: '#03a9f4',
+    btnColor: '#fff',
+    btnBorder: '#72d3ff'
   },
   dark: {
     body: '#2b2b2d',
@@ -15,6 +18,9 @@ export const themes = {
     color: '#fff',
     placeholder: '#fff',
     bottom: '#3b3b3d',
-    dark: '#212121'
+    dark: '#212121',
+    btnMain: '#009688',
+    btnColor: '#fff',
+    btnBorder: '#15d0be'
   }
 }
