@@ -3,7 +3,7 @@ import { noop } from "lodash";
 import styled from "styled-components";
 import { IoMdArrowDropdown } from "react-icons/io";
 import { themes } from "../theme-style";
-import { randomMakeId, filterSearch } from "../tools";
+import { randomMakeId, filterObjSearch } from "../tools";
 import { BasicDropInputStyled } from "../common/Commons";
 
 const StyledDropInput = styled(BasicDropInputStyled)``;
@@ -55,23 +55,19 @@ export const DropInput = ({
     <input className="input" placeholder={placeholder} readOnly value={inputValue}></input>
     <input id={searchInputId} className="search-input" onChange={(e) => {
       const val = e.target.value;
-      setData(filterSearch(datalist, val, emptyValue));
+      setData(filterObjSearch(datalist, val, emptyValue));
     }}></input>
     <IoMdArrowDropdown className="svg-IoMdArrowDropdown" />
     <div className="data-list">
       {data.map((val, key) => <div key={key} className="data"
         onClick={() => {
-          if (val === emptyValue) {
+          if (val.value === emptyValue) {
             return;
           }
-          const values = {
-            index: key + 1,
-            value: val,
-          }
-          setInputValue(val);
-          onClick(values);
+          setInputValue(val.value || '');
+          onClick(val);
         }}
-      >{val}</div>)}
+      >{val.value}</div>)}
     </div>
   </StyledDropInput>
 }

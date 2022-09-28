@@ -14,3 +14,9 @@ export const filterSearch = (data = [], key = '', emptyValue = "") => {
   const reslut = update.length === 0 ? [emptyValue] : update;
   return reslut
 };
+
+export const filterObjSearch = (data = [], key = '', emptyValue = "") => {
+  const update = data.filter((val) => !!~val.value.toLowerCase().indexOf(key.toLowerCase()));
+  const reslut = update.length === 0 ? [{ value: emptyValue }] : update;
+  return reslut
+};
