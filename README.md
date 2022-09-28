@@ -52,7 +52,9 @@ component params guide.
 
 
 ### 📌 Date Picker
+
 | object | Params | Type |
+| ------ | ------ | ------ |
 | theme | light / dark | string |
 | width | [default: 180px] (number) + px / % / rem ...etc | string |
 | onClick | call your eventt, return: object { selected: moment(pick date) } | function |
