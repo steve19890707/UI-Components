@@ -18,14 +18,41 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 const StyledApp = styled.div`
-  box-sizing:border-box ;
-  padding:50px ;
-  .title {
-    font-size:24px;
-    font-weight:bold ;
-    margin-bottom:50px ;
+  .app-content {
+    box-sizing:border-box ;
+    padding:50px;
   }
-  .caption {
+  .app-title {
+    position: relative;
+    width:100% ;
+    background-color:#0f0b08 ;
+    height: 120px;
+  }
+  .app-title .banner {
+    opacity:.8 ;
+    position: absolute;
+    top:50% ;
+    left:50% ;
+    transform: translate(-50%,-50%);
+    width:500px;
+    height:100%;
+    background-image:url('./UI-Components/imgs/banner.jpg');
+    background-repeat:no-repeat ;
+    background-position:center -50px;
+    background-size:500px ;
+    z-index:1 ;
+  }
+  .app-title span {
+    position: absolute;
+    bottom:10% ;
+    left:50% ;
+    transform: translate(-50%,0%);
+    font-size:14px ;
+    color:#fff ;
+    text-shadow:0 0 5px rgba(0,0,0,0.6) ;
+    z-index:2 ;
+  }
+  .app-caption {
     font-size:16px;
     font-weight:bold ;
     margin-bottom:25px ;
@@ -74,52 +101,58 @@ export const App = () => {
   const [inputDemoVal, setInputDemoVal] = useState('');
   const [datePickerDemoVal, setDatePickerDemoVal] = useState('YYYY/MM/DD');
   return <StyledApp theme={theme}>
-    <GlobalStyle theme={theme} />    <div className="theme-btns">
-      <button onClick={() => setTheme('light')}>light</button>
-      <button onClick={() => setTheme('dark')}>dark</button>
+    <GlobalStyle theme={theme} />
+    <div className="app-title">
+      <span>ADAM UI</span>
+      <div className="banner"></div>
     </div>
-    <div className="title">💪 Welcome Use Muscle UI 💪</div>
-    <div className="caption">[ drop input ] demo :</div>
-    <div className="demo-compnent">
-      <DropInput
-        theme={theme}
-        datalist={[{ value: "Apple", id: 1 }, { value: "Orange", id: 2 }, { value: "Pear", id: 3 }, { value: "Lemon", id: 4 }, { value: "Apple1", id: 5 }, { value: "Orange2", id: 6 }, { value: "Pear3", id: 7 }, { value: "Lemon4", id: 8 }]}
-        onClick={(e) => setDropInputDemoVal(e)}
-      />
-      <div className="compnent-value">value: <span>{dropInputDemoVal.value}</span>, id: <span>{dropInputDemoVal.id}</span></div>
-    </div>
-    <div className="caption">[ button ] demo :</div>
-    <div className="demo-compnent">
-      <Button
-        theme={theme}
-        onClick={() => setButtonDemoVal('clicked!')}
-      />
-      <div className="compnent-value">value: <span>{buttonDemoVal}</span></div>
-    </div>
-    <div className="caption">[ switch ] demo :</div>
-    <div className="demo-compnent">
-      <Switch
-        theme={theme}
-        status={switchDemoVal}
-        onChange={() => setSwitchDemoVal(prev => !prev)}
-      />
-      <div className="compnent-value">value: <span>{switchDemoVal ? 'true' : 'false'}</span></div>
-    </div>
-    <div className="caption">[ input ] demo :</div>
-    <div className="demo-compnent">
-      <Input
-        theme={theme}
-        datalist={["@fresco.tech", "@google.com"]}
-        onChange={(val) => setInputDemoVal(val)}
-      />
-      <div className="compnent-value">value: <span>{inputDemoVal}</span></div>
-    </div>
-    <div className="caption">[ date picker ] demo :</div>
-    <div className="demo-compnent">
-      <DatePicker theme={theme}
-        onClick={(val) => setDatePickerDemoVal(val.selected.format('YYYY/MM/DD'))}
-      />
-      <div className="compnent-value">value: <span>{datePickerDemoVal}</span></div>
+    <div className="app-content">
+      <div className="theme-btns">
+        <button onClick={() => setTheme('light')}>light</button>
+        <button onClick={() => setTheme('dark')}>dark</button>
+      </div>
+      <div className="app-caption">[ drop input ] demo :</div>
+      <div className="demo-compnent">
+        <DropInput
+          theme={theme}
+          datalist={[{ value: "Apple", id: 1 }, { value: "Orange", id: 2 }, { value: "Pear", id: 3 }, { value: "Lemon", id: 4 }, { value: "Apple1", id: 5 }, { value: "Orange2", id: 6 }, { value: "Pear3", id: 7 }, { value: "Lemon4", id: 8 }]}
+          onClick={(e) => setDropInputDemoVal(e)}
+        />
+        <div className="compnent-value">value: <span>{dropInputDemoVal.value}</span>, id: <span>{dropInputDemoVal.id}</span></div>
+      </div>
+      <div className="caption">[ button ] demo :</div>
+      <div className="demo-compnent">
+        <Button
+          theme={theme}
+          onClick={() => setButtonDemoVal('clicked!')}
+        />
+        <div className="compnent-value">value: <span>{buttonDemoVal}</span></div>
+      </div>
+      <div className="caption">[ switch ] demo :</div>
+      <div className="demo-compnent">
+        <Switch
+          theme={theme}
+          status={switchDemoVal}
+          onChange={() => setSwitchDemoVal(prev => !prev)}
+        />
+        <div className="compnent-value">value: <span>{switchDemoVal ? 'true' : 'false'}</span></div>
+      </div>
+      <div className="caption">[ input ] demo :</div>
+      <div className="demo-compnent">
+        <Input
+          theme={theme}
+          datalist={["@fresco.tech", "@google.com"]}
+          onChange={(val) => setInputDemoVal(val)}
+        />
+        <div className="compnent-value">value: <span>{inputDemoVal}</span></div>
+      </div>
+      <div className="caption">[ date picker ] demo :</div>
+      <div className="demo-compnent">
+        <DatePicker theme={theme}
+          onClick={(val) => setDatePickerDemoVal(val.selected.format('YYYY/MM/DD'))}
+        />
+        <div className="compnent-value">value: <span>{datePickerDemoVal}</span></div>
+      </div>
     </div>
   </StyledApp>
 }

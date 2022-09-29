@@ -1,4 +1,4 @@
-# Muscle UI Components (beta)
+# ADAM [app developer advanced modules] UI Components (beta)
 
 It's components for React, now is beta version, release will be come in future.
 ### [develop using packages]
