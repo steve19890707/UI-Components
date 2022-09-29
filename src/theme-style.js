@@ -11,6 +11,7 @@ export const themes = {
     btnBorder: '#72d3ff',
     switchBG: '#cdcdcd',
     tabBG: '#cdcdcd',
+    border: '#b5b5b5',
     dpOtherMonth: '#b3b3b3',
   },
   dark: {
@@ -25,6 +26,7 @@ export const themes = {
     btnBorder: '#15d0be',
     switchBG: '#1e1e1e',
     tabBG: '#1e1e1e',
+    border: '#b5b5b5',
     dpOtherMonth: '#b3b3b3',
   }
 }

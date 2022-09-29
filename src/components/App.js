@@ -9,6 +9,7 @@ import { Switch } from "../UI-components/Switch";
 import { Input } from "../UI-components/Input";
 import { DatePicker } from "../UI-components/DatePicker";
 import { Tab } from "../UI-components/Tab";
+import { List } from "../UI-components/List";
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -180,6 +181,27 @@ export const App = () => {
           onClick={(val) => setTabDemoVal(val.value)}
         />
         <div className="compnent-value">value: <span>{tabDemoVal}</span></div>
+      </div>
+      <div className="app-caption">[ 🍎 List ] demo :</div>
+      <div className="demo-compnent">
+        <List
+          theme={theme}
+          header='Single Data List'
+          data={['Racing car sprays burning fuel into crowd.', 'Japanese princess to wed commoner.', 'Australian walks 100km after outback crash.']}
+        />
+      </div>
+      <div className="demo-compnent">
+        <List
+          theme={theme}
+          header='Multiple Data List'
+          dataType='multiple'
+          data={[
+            ['demo1', 'demo2', 'demo3', 'demo4', 'demo5'],
+            ['data1', 'data2', 'data3'],
+            ['demo1', 'demo2', 'demo3', 'demo4'],
+            ['demo1', 'demo2', 'demo3', 'demo4', 'demo5'],
+          ]}
+        />
       </div>
     </div>
   </StyledApp>
