@@ -5,7 +5,7 @@ It's components for React, now is beta version, release will be come in future.
 - react-icons(4.4.0)
 - styled-components(5.3.5)
 - lodash(4.17.21)
-
+- moment(2.29.4)
 ## Components Using
 
 component params guide.
