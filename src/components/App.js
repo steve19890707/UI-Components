@@ -46,7 +46,7 @@ const StyledApp = styled.div`
     transform: translate(-50%,-50%);
     width:500px;
     height:100%;
-    background-image:url('./UI-Components/imgs/banner.jpg');
+    background-image:url('./imgs/banner.jpg');
     background-repeat:no-repeat ;
     background-position:center -50px;
     background-size:500px ;
