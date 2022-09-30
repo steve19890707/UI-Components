@@ -18,6 +18,9 @@ const GlobalStyle = createGlobalStyle`
     color:${({ theme }) => themes[theme].color};
     transition:.2s ;
   }
+  * {
+    -webkit-tap-highlight-color:transparent ;
+  }
 `;
 const StyledApp = styled.div`
   @keyframes blurIn {
@@ -196,10 +199,18 @@ export const App = () => {
           header='Multiple Data List'
           dataType='multiple'
           data={[
-            ['demo1', 'demo2', 'demo3', 'demo4', 'demo5'],
-            ['data1', 'data2', 'data3'],
-            ['demo1', 'demo2', 'demo3', 'demo4'],
-            ['demo1', 'demo2', 'demo3', 'demo4', 'demo5'],
+            {
+              title: 'data caption-1',
+              data: ['Racing car sprays burning fuel into crowd.', 'Japanese princess to wed commoner.', 'Australian walks 100km after outback crash.']
+            },
+            {
+              title: 'data caption-2',
+              data: ['Racing car sprays burning fuel into crowd.', 'Japanese princess to wed commoner.', 'Australian walks 100km after outback crash.']
+            },
+            {
+              title: 'data caption-3',
+              data: ['Racing car sprays burning fuel into crowd.', 'Japanese princess to wed commoner.', 'Australian walks 100km after outback crash.']
+            },
           ]}
         />
       </div>

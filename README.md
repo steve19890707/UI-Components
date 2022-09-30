@@ -58,3 +58,24 @@ component params guide.
 | theme | light / dark | string |
 | width | [default: 180px] (number) + px / % / rem ...etc | string |
 | onClick | call your eventt, return: object { selected: moment(pick date) } | function |
+
+### 📌 Tab
+
+| object | Params | Type |
+| ------ | ------ | ------ |
+| datalist | default: empty array | array |
+| defaultId | default: 1 | Number |
+| theme | light / dark | string |
+| onClick | call your eventt, return: object { id, value } | function |
+
+### 📌 List
+
+| object | Params | Type |
+| ------ | ------ | ------ |
+| dataType | default: 'single'(single, multiple) | string |
+| data(single) | default: empty array; type:[ 'string',... ] | array |
+| data(multiple) | default: empty array; type:[ { title, data },... ] | array |
+| header | default: 'header' | string |
+| theme | light / dark | string |
+| width | [default: 600px] (number) + px / % / rem ...etc | string |
+| onClick | call your eventt, return: value | function |
