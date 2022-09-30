@@ -1,4 +1,4 @@
-# ADAM [app developer advanced modules] UI Components (beta)
+# ADAM [app developer advanced module] UI Components (beta)
 
 It's components for React, now is beta version, release will be come in future.
 ### [develop using packages]
@@ -6,10 +6,11 @@ It's components for React, now is beta version, release will be come in future.
 - styled-components(5.3.5)
 - lodash(4.17.21)
 - moment(2.29.4)
+- classnames(2.3.2)
 ## Components Using
 
 component params guide.
-### 📌 DropInput
+### 🍎 DropInput
 
 | object | Params | Type |
 | ------ | ------ | ------ |
@@ -21,7 +22,7 @@ component params guide.
 | emptyValue | default: 'data not found' | string |
 | onClick | call your event, return: object | function |
 
-### 📌 Button
+### 🍎 Button
 
 | object | Params | Type |
 | ------ | ------ | ------ |
@@ -31,7 +32,7 @@ component params guide.
 | fontSize | [default: 14px] (number) + px / % / rem ...etc | string |
 | onClick | call your event | function |
 
-### 📌 Switch
+### 🍎 Switch
 
 | object | Params | Type |
 | ------ | ------ | ------ |
@@ -39,7 +40,7 @@ component params guide.
 | size | [default: 50px] (number) + px / % / rem ...etc | string |
 | onChange | call your event, return: Boolen | function |
 
-### 📌 Input
+### 🍎 Input
 
 | object | Params | Type |
 | ------ | ------ | ------ |
@@ -51,7 +52,7 @@ component params guide.
 | onChange | call your event, return: value(string) | function |
 
 
-### 📌 Date Picker
+### 🍎 Date Picker
 
 | object | Params | Type |
 | ------ | ------ | ------ |
@@ -59,7 +60,7 @@ component params guide.
 | width | [default: 180px] (number) + px / % / rem ...etc | string |
 | onClick | call your eventt, return: object { selected: moment(pick date) } | function |
 
-### 📌 Tab
+### 🍎 Tab
 
 | object | Params | Type |
 | ------ | ------ | ------ |
@@ -68,13 +69,13 @@ component params guide.
 | theme | light / dark | string |
 | onClick | call your eventt, return: object { id, value } | function |
 
-### 📌 List
+### 🍎 List
 
 | object | Params | Type |
 | ------ | ------ | ------ |
 | dataType | default: 'single'(single, multiple) | string |
-| data(single) | default: empty array; type:[ 'string',... ] | array |
-| data(multiple) | default: empty array; type:[ { title, data },... ] | array |
+| data(single) | default: empty array; type: [ 'string',... ] | array |
+| data(multiple) | default: empty array; type: [ { title, data },... ] | array |
 | header | default: 'header' | string |
 | theme | light / dark | string |
 | width | [default: 600px] (number) + px / % / rem ...etc | string |
