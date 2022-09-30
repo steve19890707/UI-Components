@@ -46,8 +46,7 @@ const StyledApp = styled.div`
     transform: translate(-50%,-50%);
     width:500px;
     height:100%;
-    background-image:url('./imgs/banner.jpg');
-    background-repeat:no-repeat ;
+    background-image: ${({devEnv})=> `url(".${devEnv ? '/UI-Components' : ''}/imgs/banner.jpg")`};
     background-position:center -50px;
     background-size:500px ;
     z-index:1 ;
@@ -105,6 +104,7 @@ const StyledApp = styled.div`
   }
 `;
 export const App = () => {
+  const devEnv = process.env.NODE_ENV === 'development';
   const [theme, setTheme] = useState('light')
   const [dropInputDemoVal, setDropInputDemoVal] = useState('');
   const [buttonDemoVal, setButtonDemoVal] = useState('');
@@ -112,7 +112,7 @@ export const App = () => {
   const [inputDemoVal, setInputDemoVal] = useState('');
   const [datePickerDemoVal, setDatePickerDemoVal] = useState('YYYY/MM/DD');
   const [tabDemoVal, setTabDemoVal] = useState('Orange');
-  return <StyledApp theme={theme}>
+  return <StyledApp theme={theme} devEnv={devEnv}>
     <GlobalStyle theme={theme} />
     <div className="app-title">
       <span>ADAM UI</span>
@@ -214,6 +214,7 @@ export const App = () => {
           ]}
         />
       </div>
+      <div className="app-caption">[ 🍎 Tags ] demo :</div>
     </div>
   </StyledApp>
 }
