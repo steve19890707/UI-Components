@@ -3,13 +3,7 @@ import "reset-css";
 import styled, { createGlobalStyle } from "styled-components";
 import { themes } from "../theme-style";
 // tools
-import { DropInput } from "../UI-components/DropInput";
-import { Button } from "../UI-components/Button";
-import { Switch } from "../UI-components/Switch";
-import { Input } from "../UI-components/Input";
-import { DatePicker } from "../UI-components/DatePicker";
-import { Tab } from "../UI-components/Tab";
-import { List } from "../UI-components/List";
+import { Button, DatePicker, Input, Tab, Switch, DropInput, List } from "adam-ui-beta";
 
 const GlobalStyle = createGlobalStyle`
   body {
