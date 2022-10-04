@@ -3,7 +3,7 @@ import "reset-css";
 import styled, { createGlobalStyle } from "styled-components";
 import { themes } from "../theme-style";
 // tools
-import { Button, DatePicker, Input, Tab, Switch, DropInput, List, Tags } from "adam-ui-beta";
+import { Button, DatePicker, Input, Tab, Switch, DropInput, List, Tags, DragDrop } from "adam-ui-beta";
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -114,6 +114,9 @@ export const App = () => {
   const [inputDemoVal, setInputDemoVal] = useState("");
   const [datePickerDemoVal, setDatePickerDemoVal] = useState("YYYY/MM/DD");
   const [tabDemoVal, setTabDemoVal] = useState("Orange");
+  const [dragDropDemoVal, setDragDropDemoVal] = useState([
+
+  ]);
   return (
     <StyledApp theme={theme} devEnv={devEnv}>
       <GlobalStyle theme={theme} />
@@ -269,6 +272,38 @@ export const App = () => {
           <Tags type="hashtag" />
           <span className="demo-seprate">/</span>
           <Tags type="horizontal" />
+        </div>
+        <div className="demo-compnent">
+          <DragDrop
+            dataList={[{
+              title: 'DragDrop',
+              list: ["task:1", "task:2", "task:3", "task:4"]
+            },
+            {
+              title: 'DragDrop',
+              list: ["task:a", "task:b", "task:c", "task:d"]
+            },
+            {
+              title: 'DragDrop',
+              list: ["task:q", "task:w", "task:e", "task:r"]
+            },
+            ]}
+            onChange={(e) => setDragDropDemoVal(e)}
+          />
+        </div>
+        <div className="demo-compnent">
+          <div className="compnent-value">
+            task 1 :
+            {dragDropDemoVal.length > 0 && dragDropDemoVal[0].list.map((v, k) => <span key={k}>[{v}]</span>)}
+          </div>
+          <div className="compnent-value">
+            task 2 :
+            {dragDropDemoVal.length > 0 && dragDropDemoVal[1].list.map((v, k) => <span key={k}>[{v}]</span>)}
+          </div>
+          <div className="compnent-value">
+            task 3 :
+            {dragDropDemoVal.length > 0 && dragDropDemoVal[2].list.map((v, k) => <span key={k}>[{v}]</span>)}
+          </div>
         </div>
       </div>
     </StyledApp>
