@@ -1,0 +1,1 @@
+export const srcPath = (devEnv = true, src = "") => devEnv ? `/UI-Components/${src}` : `./${src}`;

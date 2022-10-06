@@ -1,126 +1,38 @@
-import { useState } from "react";
 import "reset-css";
 import styled, { createGlobalStyle } from "styled-components";
+import { HashRouter } from "react-router-dom";
+import { AppRoutes } from "./Routes";
 import { themes } from "../theme-style";
+import { useSelector } from "react-redux";
 // tools
-import { Button, DatePicker, Input, Tab, Switch, DropInput, List, Tags, DragDrop } from "adam-ui-beta";
+// import { Button, DatePicker, Input, Tab, Switch, DropInput, List, Tags, DragDrop } from "adam-ui-beta";
 
 const GlobalStyle = createGlobalStyle`
   body {
     font-family: Arial, Helvetica, sans-serif;
     background:${({ theme }) => themes[theme].body};
     color:${({ theme }) => themes[theme].color};
-    transition:.2s ;
+  }
+  a {
+    text-decoration: none;
+    color: ${({ theme }) => themes[theme].color};
   }
   * {
     -webkit-tap-highlight-color:transparent ;
   }
 `;
 const StyledApp = styled.div`
-  @keyframes blurIn {
-    0% {
-      filter: blur(1rem);
-    }
-    100% {
-      filter: blur(0);
-    }
-  }
-  .app-content {
-    box-sizing: border-box;
-    padding: 50px;
-  }
-  .app-title {
-    position: relative;
-    width: 100%;
-    background-color: #0f0b08;
-    height: 120px;
-    overflow: hidden;
-  }
-  .app-title .banner {
-    opacity: 0.8;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 500px;
-    height: 100%;
-    background-image: ${({ devEnv }) =>
-    `url(".${devEnv ? "/UI-Components" : ""}/imgs/banner.jpg")`};
-    background-position: center -50px;
-    background-size: 500px;
-    z-index: 1;
-    animation: blurIn 1s;
-  }
-  .app-title span {
-    position: absolute;
-    bottom: 10%;
-    left: 50%;
-    transform: translate(-50%, 0%);
-    font-size: 14px;
-    color: #fff;
-    text-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
-    z-index: 2;
-  }
-  .app-caption {
-    font-size: 16px;
-    font-weight: bold;
-    margin-bottom: 25px;
-  }
-  .theme-btns {
-    display: flex;
-    align-items: center;
-    margin-bottom: 25px;
-    button {
-      border-radius: 50px;
-      padding: 8px 16px;
-      border: 0;
-      font-size: 16px;
-      box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-      cursor: pointer;
-    }
-    button:nth-child(1) {
-      background-color: ${themes.light.bottom};
-      color: ${themes.light.color};
-      margin-right: 12px;
-    }
-    button:nth-child(2) {
-      background-color: ${themes.dark.bottom};
-      color: ${themes.dark.color};
-      margin-right: 12px;
-    }
-  }
-  .demo-compnent {
-    display: flex;
-    align-items: center;
-    margin-bottom: 50px;
-  }
-  .compnent-value {
-    font-size: 16px;
-    margin-left: 20px;
-    span {
-      color: ${({ theme }) => themes[theme].main};
-    }
-  }
-  .demo-seprate {
-    padding: 0 6px;
-  }
 `;
 export const App = () => {
-  const devEnv = process.env.NODE_ENV === "development";
-  const [theme, setTheme] = useState("light");
-  const [dropInputDemoVal, setDropInputDemoVal] = useState("");
-  const [buttonDemoVal, setButtonDemoVal] = useState("");
-  const [switchDemoVal, setSwitchDemoVal] = useState(false);
-  const [inputDemoVal, setInputDemoVal] = useState("");
-  const [datePickerDemoVal, setDatePickerDemoVal] = useState("YYYY/MM/DD");
-  const [tabDemoVal, setTabDemoVal] = useState("Orange");
-  const [dragDropDemoVal, setDragDropDemoVal] = useState([
-
-  ]);
+  const props = useSelector((state) => state.props);
   return (
-    <StyledApp theme={theme} devEnv={devEnv}>
-      <GlobalStyle theme={theme} />
-      <div className="app-title">
+    <StyledApp theme={props.theme} devEnv={props.devEnv}>
+      <GlobalStyle theme={props.theme} />
+      <HashRouter>
+        <AppRoutes />
+      </HashRouter>
+
+      {/* <div className="app-title">
         <span>ADAM UI</span>
         <div className="banner"></div>
       </div>
@@ -305,7 +217,7 @@ export const App = () => {
             {dragDropDemoVal.length > 0 && dragDropDemoVal[2].list.map((v, k) => <span key={k}>[{v}]</span>)}
           </div>
         </div>
-      </div>
+      </div> */}
     </StyledApp>
   );
 };
